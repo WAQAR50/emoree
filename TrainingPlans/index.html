@@ -73,7 +73,7 @@
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input level-filter" type="checkbox" value="schwer" id="Schwer">
-              <label class="form-check-label" for="Schreiben">
+              <label class="form-check-label" for="Schwer">
                 Schwer
               </label>
             </div>
@@ -295,102 +295,116 @@
   <script type="text/javascript" src="dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" >
     // Cache your elements
-    const $cards = $("[data-category]");
-    const $cardsCkb = $(".filter_lesen");
-    const $cardsLvlCkb = $(".level-filter");
-    const $gridonoff = $(".gridonoff");
-    var checkedLvlArr = [];
-    var filterArray = [];
-    let filterLvlArray = [];
+    // Cache your elements
+const $cards = $("[data-category]");
+const $cardsCkb = $(".filter_lesen");
+const $cardsLvlCkb = $(".level-filter");
+const $gridonoff = $(".gridonoff");
+var checkedLvlArr = [];
+var filterArray = [];
+let filterLvlArray = [];
+var flg = true;
+var defaultLevel = ['schwer', 'mittel', 'leicht'];
+$cardsCkb.on("change", function() {
+	filterArray = [];
+  // Create an Array of checked values
+  const checkedArr = $cardsCkb.filter(":checked").get().map(el => el.value);
+  if (!checkedArr.length){ $gridonoff.addClass("col-md-8")}
+  flg = true;
+  //console.log('checked arr ',checkedArr);
+  checkedArr.forEach( element => {
+	let tempArr = element.split(',');
+	let existingArr = filterArray;
+	if(existingArr.length){
+		filterArray = [];
+		tempArr.forEach( tempEle => {
+			if(existingArr.includes(tempEle)) {
+				filterArray.push(tempEle);
+			}
+		});
+    if(filterArray.length < 1){
+      flg = false;
+    }
+	}else{
+    if(flg)
+		  filterArray = tempArr;
+	}
 
-    var defaultLevel = ['schwer', 'mittel', 'leicht'];
-    $cardsCkb.on("change", function () {
-      filterArray = [];
+  });
+  
+  //console.log('filter arr lvl',checkedLvlArr); 
+  //console.log('filter arr ',filterArray);
+  //if (!checkedArr.length){ $gridonoff.addClass("col-md-8")}
+  // Show all and exit if no filter is active
+  checkedLvlArrtmp = $cardsLvlCkb.filter(":checked").get().map(el => el.value);
+  if (!(checkedArr.length || checkedLvlArrtmp.length)) {
+	 $cards.removeClass("is-hidden");
+   console.log('1');
+	 return;
+  } 
+   if (checkedArr.length){ $gridonoff.removeClass("col-md-8"); }
+    if(checkedArr.length == 4){  $gridonoff.addClass("col-md-8")}
 
-      // Create an Array of checked values
-      const checkedArr = $cardsCkb.filter(":checked").get().map(el => el.value);
-      if (!checkedArr.length) { $gridonoff.addClass("col-md-8") }
+	if (!checkedLvlArr.length) {
+		//$cards.removeClass("is-hidden");
+		checkedLvlArr = defaultLevel;
+	}
+
+	//console.log('filter arr ww ',checkedLvlArr);
+    //if (checkedArr.length) return $gridonoff.removeClass("col-md-8"); 
+  // Finally, use jQuery's .toggleClass() and JS's Array.prototype.includes()
+  $cards.each(function() {
+    const category = $(this).data("category");
+	const level = $(this).data("level");
+	const childonoff = $(this).first().hasClass("childonoff");
+	if (!checkedArr.length){
+    	$(this).toggleClass("is-hidden", !(checkedLvlArr.includes(level)));
+      console.log('2');
+  }	else {
+    console.log('3');
+		$(this).toggleClass("is-hidden", !(filterArray.includes(category) && checkedLvlArr.includes(level)));
+		$(this).toggleClass("col-md-6 col-sm-6 col-xs-6 ", (filterArray.includes(childonoff)));
+	}
+  });
+
+});
+
+$cardsLvlCkb.on("change", function() {
+
+  // Create an Array of checked values
+  checkedtmp = $cardsCkb.filter(":checked").get().map(el => el.value);
+  checkedLvlArr = $cardsLvlCkb.filter(":checked").get().map(el => el.value);
+  if (!(checkedtmp.length || checkedLvlArr.length)) {
+	$gridonoff.addClass("col-md-8");
+	$cards.removeClass("is-hidden");
+  console.log('1');
+	return;
+  }
+  if (!checkedLvlArr.length){ 
+	$gridonoff.addClass("col-md-8");
+	checkedLvlArr = defaultLevel;
+}
+
+  //console.log('checked arr lvl',checkedLvlArr);
+
+  $cards.each(function() {
+    const category = $(this).data("category");
+	const level = $(this).data("level");
+	const childonoff = $(this).first().hasClass("childonoff");
+	if (!checkedtmp.length){
+      console.log('2');
+    	$(this).toggleClass("is-hidden", !(checkedLvlArr.includes(level)));
+  }	else {
+    console.log('3');
+		$(this).toggleClass("is-hidden", !(filterArray.includes(category) && checkedLvlArr.includes(level)));
+	  $(this).toggleClass("col-md-6 col-sm-6 col-xs-6 ", (filterArray.includes(childonoff)));
+  }
+	
+  });
 
 
-     // console.log('checked arr ', checkedArr);
-      checkedArr.forEach(element => {
-        let tempArr = element.split(',');
-        let existingArr = filterArray;
-        if (existingArr.length) {
-          filterArray = [];
-          tempArr.forEach(tempEle => {
-            if (existingArr.includes(tempEle)) {
-              filterArray.push(tempEle);
-            }
-          });
-        } else {
-          filterArray = tempArr;
-        }
 
-      });
-
-   
-      // Show all and exit if no filter is active
-      checkedLvlArrtmp = $cardsLvlCkb.filter(":checked").get().map(el => el.value);
-      if (!(checkedArr.length || checkedLvlArrtmp.length)) {
-        $cards.removeClass("is-hidden");
-        return;
-      }
-      if (checkedArr.length) { $gridonoff.removeClass("col-md-8"); }
-      if (checkedArr.length == 4) { $gridonoff.addClass("col-md-8") }
-
-      if (!checkedLvlArr.length) {
-        //$cards.removeClass("is-hidden");
-        checkedLvlArr = defaultLevel;
-      }
-
-      console.log('filter arr ww ', checkedLvlArr);
-      //if (checkedArr.length) return $gridonoff.removeClass("col-md-8"); 
-      // Finally, use jQuery's .toggleClass() and JS's Array.prototype.includes()
-      $cards.each(function () {
-        const category = $(this).data("category");
-        const level = $(this).data("level");
-        const childonoff = $(this).first().hasClass("childonoff");
-        if (!filterArray.length)
-          $(this).toggleClass("is-hidden", !(checkedLvlArr.includes(level)));
-        else {
-          $(this).toggleClass("is-hidden", !(filterArray.includes(category) && checkedLvlArr.includes(level)));
-          $(this).toggleClass("col-md-6 col-sm-6 col-xs-6 ", (filterArray.includes(childonoff)));
-        }
-      });
-
-    });
-
-    $cardsLvlCkb.on("change", function () {
-
-      // Create an Array of checked values
-      checkedLvlArr = $cardsLvlCkb.filter(":checked").get().map(el => el.value);
-      if (!(filterArray.length || checkedLvlArr.length)) {
-        $gridonoff.addClass("col-md-8");
-        $cards.removeClass("is-hidden");
-        return;
-      }
-      if (!checkedLvlArr.length) {
-        $gridonoff.addClass("col-md-8");
-        checkedLvlArr = defaultLevel;
-      }
-
-      //console.log('checked arr lvl', checkedLvlArr);
-
-      $cards.each(function () {
-        const category = $(this).data("category");
-        const level = $(this).data("level");
-        const childonoff = $(this).first().hasClass("childonoff");
-        if (!filterArray.length)
-          $(this).toggleClass("is-hidden", !(checkedLvlArr.includes(level)));
-        else
-          $(this).toggleClass("is-hidden", !(filterArray.includes(category) && checkedLvlArr.includes(level)));
-        $(this).toggleClass("col-md-6 col-sm-6 col-xs-6 ", (filterArray.includes(childonoff)));
-
-      });
-
-      
-    });
+});
 
   </script>
 
