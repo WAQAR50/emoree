@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+
+<style>
+
+.purple-task {
+    /* fallback for old browsers */
+    background: #fb5b63;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(251,91,99,1), rgba(174,35,208,1));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(251,91,99,1), rgba(174,35,208,1));
+	box-shadow: 0px 4px 0px 0px rgb(131 97 160 ), 0 4px 0px 0px rgb(90 71 214 ) !important;
+  }
+.orange-task{
+	/* fallback for old browsers */
+    background: rgba(242,134,6,1);
+box-shadow: 0 4px 0px 0px rgba(132, 126, 143) !important;
+}
+.yellow-task{
+	/* fallback for old browsers */
+    background: rgba(253,206,25,1);
+	box-shadow: 0 4px 0px 0px rgba(134, 158, 154) !important;
+
+}.green-task{
+	/* fallback for old browsers */
+    background: rgba(35,191,74,1);
+	box-shadow: 0 4px 0px 0px rgba(14, 146, 154) !important;
+
+}.sky-task{
+	/* fallback for old browsers */
+    background: rgba(61,210,254,1);
+	box-shadow: 0 4px 0px 0px rgba(30, 155, 235) !important;
+
+}.purple2-task{
+	/* fallback for old browsers */
+    background: rgba(166,29,220,1);
+	box-shadow: 0 3px 0px 1px rgba(95, 78, 220) !important;
+
+}.blue-task{
+	/* fallback for old browsers */
+    background: rgba(21,128,217,1);
+	box-shadow: 0 4px 0px 0px rgba(10, 112,217) !important;
+
+}.blu2-task{
+   /* fallback for old browsers */
+    background: #3cd0fe;
+  
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(60,208,254,0.95), rgba(21,124,218,0.95));
+  
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(60,208,254,0.95), rgba(21,124,218,0.95));
+	box-shadow: 0 4px 0px 0px rgba(24, 122, 219, .8), 0 3px 3px 0px rgba(24, 122, 219, .45) !important;
+
+}
+.plan-links{
+	margin:0px;
+	padding:0px;
+	    display: flex;
+	}
+.plan-links li{
+	display:inline-block;
+	margin-right:10px;
+	list-style:none;
+	}
+.plan-links li a{
+	color:#fff;
+	font-size: 12px;
+	}
+.plan-links li:after{
+	content: "";
+    border: 1px #fff solid;
+    
+    position: relative;
+    left: 5px;
+	
+	}
+.plan-links li:last-child{
+	margin-right:0px;
+	
+	}
+.plan-links li:last-child:after{
+	border:0px;
+	}
+.material-icons{
+	color:#fff;
+	font-size:140px;
+	}
+.card-body{
+	padding-right: 0.1rem;   
+}
+ h3 {
+    font-size: 1.5rem;
+}
+.form-check-input[type=checkbox] {
+    border-radius: 0.25rem;
+    margin-top: 0.19em;
+    margin-right: 6px;
+}
+
+.form-check-input:before {
+    content: "";
+    position: absolute;
+    box-shadow: 0 0 0 13px transparent;
+    border-radius: 50%;
+    width: 0.875rem;
+    height: 0.875rem;
+    background-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+}
+.form-check-input:before {
+    content: "";
+    position: absolute;
+    box-shadow: 0 0 0 13px transparent;
+    border-radius: 50%;
+    width: 0.875rem;
+    height: 0.875rem;
+    background-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+}
+.form-check-input:checked:before {
+    opacity: .16;
+}
+.form-check-input:checked:after {
+    content: "";
+    position: absolute;
+}
+.form-check-input[type=checkbox]:checked:after {
+    display: block;
+    transform: rotate(45deg) /*!rtl:ignore*/;
+    width: 0.375rem;
+    height: 0.8125rem;
+    border: 0.125rem solid #fff;
+    border-top: 0;
+    border-left: 0 /*!rtl:ignore*/;
+    margin-left: 0.25rem;
+    margin-top: -1px;
+    background-color: transparent;
+}
+.form-check-input[type=checkbox]:checked {
+    background-image: none;
+    background-color: #3b71ca;
+}
+.font-size{
+	font-size: 1.6rem;
+}
+.is-hidden{
+display:none!important;
+}
+</style> 
+<article class="overflow-hidden"> 
+
+<section>
+	<div class="row mb-5 mt-5 filters" >
+	
+	<div class="col-md-6">
+		<div class=" custom-control custom-checkbox custom-control-inline">
+			<label class="custom-control-label" ><strong>Ziele:</strong></label>
+		</div>
+		<div class=" custom-control custom-checkbox custom-control-inline">
+		  <input type="checkbox" class=" custom-control-input" value="test" id="filter-categorya"  >
+		  <label class="custom-control-label" for="filter-categorya">Lesen</label>
+		</div>
+
+		<!-- Default inline 2-->
+		<div class=" custom-control custom-checkbox  custom-control-inline">
+		  <input type="checkbox" class=" custom-control-input" value="new" id="filter-categoryb" value="categoryb">
+		  <label class="custom-control-label" for="filter-categoryb">Fokus</label>
+		</div>
+
+		<!-- Default inline 3-->
+		<div class=" custom-control custom-checkbox custom-control-inline">
+		 <input type="checkbox" class=" custom-control-input" value="old" id="defaultInline3" >
+		  <label class="custom-control-label" for="defaultInline3">Wortschatz</label>
+		</div>
+		<div class=" custom-control custom-checkbox  custom-control-inline">
+		 <input type="checkbox" class=" custom-control-input" value="old" id="defaultInline4" >
+		  <label class="custom-control-label" for="defaultInline4">Schreiben</label>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+	
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+			<label class="form-check-label" for="inlineCheckbox1">1</label>
+		</div>
+
+		<div class="form-check form-check-inline">
+		  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" />
+		  <label class="form-check-label" for="inlineCheckbox2">2</label>
+		</div>
+	</div>
+	
+	</div>
+	
+	
+	
+
+	
+	
+</section>
+
+
+
+<section class=" mb-5 ">
+
+    <div class="row ">
+		<div data-category="new" class="col-md-12 col-lg-4 wow fadeInUp d-flex align-items-stretch" data-wow-delay="" style="visibility: visible; animation-name: fadeInUp; animation-iteration-count: 1; animation-delay: 0.6s;">
+        <div class="card sky-task  z-depth-2">
+		  <div class="card-body">
+		  <div class="d-flex ">
+			<h3 class="text-uppercase font-size align-self-center flex-fill  white-text mt-2 mb-3">Mehr Abwechslung, mehr Erfolg!</h3>
+			
+			<span><i class="large material-icons">insert_chart</i></span>
+			
+			</div>
+			<p class="white-text mb-0 text-left">Ut enim ad minima veniam, quis nostrum exercita tionem ullam corporis
+			  suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit
+			  qui in ea voluptate non proident velit esse quam. </p>
+		  </div>
+		</div>
+      </div>
+      
+
+     
+		
+		 <div  class="col-md-12 col-lg-8 " >
+			<div class="row mb-5">
+			<div  data-category="test" class="  col-sm-6 col-xs-6 d-flex align-items-stretch wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; animation-iteration-count: 1;">
+			<div class="card blu2-task  z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size white-text mt-2 mb-3">PURES LESEN</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<i class="large material-icons m-0 p-0">insert_chart</i>
+					
+				</div>
+				
+			  </div>
+			</div>
+		  </div>
+	 
+		  <div data-category="old" class=" col-md-6 col-sm-6 d-flex align-items-stretch col-xs-6  wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; animation-iteration-count: 1;">
+			<div class="card blue-task  z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size  white-text mt-2 mb-3">RELAX & FOKUS</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<i class="large material-icons">insert_chart</i>
+					
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  
+		  <div data-category="new" class=" categorya categoryb col-md-6 col-sm-6 d-flex align-items-stretch col-xs-6   wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; animation-iteration-count: 1;">
+			<div class="card   purple-task  z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size white-text mt-2 mb-3">WORTSCHATZ</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<i class="large material-icons">insert_chart</i>
+					
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div data-category="test" class="col-md-6 col-sm-6 d-flex align-items-stretch col-xs-6 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight; animation-iteration-count: 1;">
+			<div class="card purple2-task z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size  white-text mt-2 mb-3">20 MINUTEN</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<i class="large material-icons">insert_chart</i>
+					
+				</div>
+			  </div>
+			</div>
+		  </div>
+		
+		</div>
+		</div>
+    
+
+      
+
+   
+
+      
+	  <div data-category="old" class="col-md-4 wow fadeInUp d-flex align-items-stretch" data-wow-delay="" style="visibility: visible; animation-name: fadeInUp; animation-iteration-count: 1; animation-delay: 0.6s;">
+       <div class="card green-task  z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size  white-text mt-2 mb-3"> LEVEL UP</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<i class="large material-icons">insert_chart</i>
+					
+				</div>
+			  </div>
+			</div>
+      </div>
+	  <div data-category="new" class="col-md-4 wow fadeInUp d-flex align-items-stretch" data-wow-delay="" style="visibility: visible; animation-name: fadeInUp; animation-iteration-count: 1; animation-delay: 0.6s;">
+        <div class="card orange-task z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size  white-text mt-2 mb-3">WORTSCHATZ & FOKUS</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<i class="large material-icons">insert_chart</i>
+					
+				</div>
+			  </div>
+			</div>
+      </div>
+	  <div data-category="old" class="col-md-4 wow fadeInUp d-flex align-items-stretch" data-wow-delay="" style="visibility: visible; animation-name: fadeInUp; animation-iteration-count: 1; animation-delay: 0.6s;">
+       <div class="card yellow-task  z-depth-2">
+			  <div class="card-body">
+				<div class="d-flex ">
+					<div class="align-self-center flex-fill"><h3 class="text-uppercase font-size  white-text mt-2 mb-3">GENAUES LESEN</h3>
+					<ul class="plan-links"><li><a href="">Konzentration</a></li><li><a href="">Leicht</a></li><li><a href="">3 Wochen</a></li></ul></div>
+					<span ><i class="large material-icons">insert_chart</i></span>
+					
+				</div>
+			  </div>
+			</div>
+      </div>
+	  
+	  
+
+    </div>
+
+  </section>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+  <!-- Start your project here-->  
+  
+  <!-- End your project here-->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript">jQuery( document ).ready(function() {
+  new WOW().init();
+});
+
+// Cache your elements
+const $cards = $("[data-category]");
+const $cardsCkb = $(".custom-control-input");
+
+$cardsCkb.on("change", function() {
+  
+  // Create an Array of checked values
+  const checkedArr = $cardsCkb.filter(":checked").get().map(el => el.value);
+  
+  // Show all and exit if no filter is active
+  if (!checkedArr.length) return $cards.removeClass("is-hidden");
+    
+  // Finally, use jQuery's .toggleClass() and JS's Array.prototype.includes()
+  $cards.each(function() {
+    const category = $(this).data("category");
+    $(this).toggleClass("is-hidden", !checkedArr.includes(category));
+  });
+
+});
+</script>
+
+</body>
+</html>
